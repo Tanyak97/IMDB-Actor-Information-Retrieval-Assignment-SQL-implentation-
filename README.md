@@ -12,7 +12,8 @@ Getting Started:
 Installation:
 
 - Setting up the IMDB Database.
-Having access to the IMDB database is essential. The file can be found attached in the folder.
+Having access to the IMDB database is essential.
+Link to download file: https://datasets.imdbws.com/
 
 - Installing MySQLWorkbench to formulate queries
 
