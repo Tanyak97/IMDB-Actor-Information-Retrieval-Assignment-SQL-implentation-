@@ -1,0 +1,350 @@
+spool foc.project3.txt
+set echo on
+
+-- query: list number of movies per year for Robert Downey Jr over his career
+
+SELECT NB.primaryname||','||TB.startyear||','||COUNT(*)
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000375' AND
+		 LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear
+ORDER BY COUNT(*) DESC;
+
+-- query: list number of movies per year for Anne Hathaway over his career
+
+
+SELECT NB.primaryname||','||TB.startyear||','||COUNT(*)
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0004266' AND
+		 LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear
+ORDER BY COUNT(*) DESC;
+
+-- query: list number of movies per year for Tom Hanks over his career
+
+
+SELECT NB.primaryname||','||TB.startyear||','||COUNT(*)
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000158' AND
+		 LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear
+ORDER BY COUNT(*) DESC;
+
+-- query: list number of movies per year for Meryl Streep over his career
+
+
+SELECT NB.primaryname||','||TB.startyear||','||COUNT(*)
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000658' AND
+		 LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear
+ORDER BY COUNT(*) DESC;
+
+-- query: list number of movies per year for Robert Dowey Jr between 1979 and 1990
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000375' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1979' and '1990'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Anne Hathaway between 1979 and 1990
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0004266' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1979' and '1990'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Tom Hanks between 1979 and 1990
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000158' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1979' and '1990'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Meryl Streep between 1979 and 1990
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000658' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1979' and '1990'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+
+-- query: list number of movies per year for Robert Downey  between 1991 and 2001
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000375' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1991' and '2001'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Anne Hathaway between 1991 and 2001
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0004266' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1991' and '2001'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Tom Hanks between 1991 and 2001
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000158' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1991' and '2001'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Meryl Streep between 1991 and 2001
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000658' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '1991' and '2001'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Robert Downey  between 2002 and 2013
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000375' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2002' and '2013'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Anne Hathaway   between 2002 and 2013
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0004266' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2002' and '2013'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+
+-- query: list number of movies per year for Tom Hanks  between 2002 and 2013
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000158' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2002' and '2013'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for  Meryl Streep  between 2002 and 2013
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000658' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2002' and '2013'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Robert Downey Jr between 2004 and 2023
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000375' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2014' and '2023'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Anne Hathway between 2004 and 2023
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0004266' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2014' and '2023'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for TOm Hanks between 2004 and 2023
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000158' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2014' and '2023'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+-- query: list number of movies per year for Meryl Streep between 2004 and 2023
+
+
+SELECT NB.primaryname||','||TB.startyear||','||TB.genres||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         NB.nconst = 'nm0000658' AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor', 'actress') AND TB.startyear NOT LIKE '\N'
+         and tb.startyear between '2014' and '2023'
+GROUP BY NB.nconst, NB.primaryname, TB.startyear, TB.genres;
+
+
+-- query: list number of max movies for actress between 2004 and 2013
+
+SELECT NB.primaryname||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actress') AND
+         tb.startyear between '2004' and '2013'
+GROUP BY NB.nconst, NB.primaryname
+HAVING COUNT(*) = (SELECT MAX(mycount)
+					FROM (SELECT COUNT(*) mycount
+						  FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+						  WHERE NB.nconst = TP.nconst AND
+                                TP.tconst = TB.tconst AND
+                                LOWER(TB.titleType) = 'movie' AND
+                                LOWER(TP.category) IN ('actress') AND
+                                tb.startyear between '2004' and '2013'
+							    GROUP BY NB.nconst, NB.primaryname));
+                                
+-- query: list number of max movies for actor between 2004 and 2013
+
+						
+SELECT NB.primaryname||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor') AND
+         tb.startyear between '2004' and '2013'
+GROUP BY NB.nconst, NB.primaryname
+HAVING COUNT(*) = (SELECT MAX(mycount)
+					FROM (SELECT COUNT(*) mycount
+						  FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+						  WHERE NB.nconst = TP.nconst AND
+                                TP.tconst = TB.tconst AND
+                                LOWER(TB.titleType) = 'movie' AND
+                                LOWER(TP.category) IN ('actor') AND
+                                tb.startyear between '2004' and '2013'
+							    GROUP BY NB.nconst, NB.primaryname));
+                                
+                                
+-- query: list number of min movies for actor between 2004 and 2013
+
+
+SELECT NB.primaryname||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actor') AND
+         tb.startyear between '2004' and '2013'
+GROUP BY NB.nconst, NB.primaryname
+HAVING COUNT(*) = (SELECT MIN(mycount)
+					FROM (SELECT COUNT(*) mycount
+						  FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+						  WHERE NB.nconst = TP.nconst AND
+                                TP.tconst = TB.tconst AND
+                                LOWER(TB.titleType) = 'movie' AND
+                                LOWER(TP.category) IN ('actor') AND
+                                tb.startyear between '2004' and '2013'
+						  GROUP BY NB.nconst, NB.primaryname
+						  HAVING COUNT(*) >= 5))
+ORDER BY NB.primaryname
+FETCH FIRST 10 ROWS ONLY;
+
+-- query: list number of min movies for actress between 2004 and 2013
+
+                          
+SELECT NB.primaryname||','||COUNT(*) 
+FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+WHERE NB.nconst = TP.nconst AND
+         TP.tconst = TB.tconst AND
+         LOWER(TB.titleType) = 'movie' AND
+         LOWER(TP.category) IN ('actress') AND
+         tb.startyear between '2004' and '2013'
+GROUP BY NB.nconst, NB.primaryname
+HAVING COUNT(*) = (SELECT MIN(mycount)
+					FROM (SELECT COUNT(*) mycount
+						  FROM imdb00.name_basics NB, imdb00.title_principals TP, imdb00.title_basics TB
+						  WHERE NB.nconst = TP.nconst AND
+                                TP.tconst = TB.tconst AND
+                                LOWER(TB.titleType) = 'movie' AND
+                                LOWER(TP.category) IN ('actress') AND
+                                tb.startyear between '2004' and '2013'
+						  GROUP BY NB.nconst, NB.primaryname
+						  HAVING COUNT(*) >= 5))
+ORDER BY NB.primaryname
+FETCH FIRST 10 ROWS ONLY;
+
+set echo off
+spool off
